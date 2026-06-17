@@ -1,0 +1,214 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--accent), #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+  min-height: 0; /* Important for flex children scrolling */
+}
+
+.editor-section, .review-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.section-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editor-container {
+  flex: 1;
+  position: relative;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+}
+
+.review-content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  line-height: 1.6;
+}
+
+.action-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.action-btn:active {
+  transform: translateY(0);
+}
+
+.action-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Markdown Styles inside review content */
+.review-content h1, 
+.review-content h2, 
+.review-content h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.review-content p {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.review-content pre {
+  background: rgba(0,0,0,0.3) !important;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid var(--border-color);
+  overflow-x: auto;
+}
+
+.review-content code {
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+}
+
+.review-content p code {
+  background: rgba(255,255,255,0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: #e2e8f0;
+}
+
+.review-content ul, .review-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.review-content li {
+  margin-bottom: 0.5rem;
+}
+
+.issue-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--warning);
+}
+
+.issue-card.error { border-left-color: var(--danger); }
+.issue-card.success { border-left-color: var(--success); }
+.issue-card.info { border-left-color: var(--accent); }
+
+.issue-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.issue-line {
+  font-family: monospace;
+  background: rgba(255,255,255,0.1);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.issue-desc {
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.issue-suggestion {
+  background: rgba(16, 185, 129, 0.1);
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  border: 1px dashed rgba(16, 185, 129, 0.3);
+}
+
+/* Spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  text-align: center;
+  gap: 1rem;
+}
+
+.empty-state svg {
+  width: 64px;
+  height: 64px;
+  opacity: 0.5;
+}
